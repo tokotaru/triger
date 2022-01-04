@@ -1,0 +1,19 @@
+from telethon import TelegramClient, sync, events
+import os
+# Вставляем api_id и api_hash
+api_id = int( input("ваш api id :"))
+api_hash = input("ваш api hash :")
+a = input(' ваш тригер :')
+aa = input('что нужно ответить :')
+client = TelegramClient('aaaa', api_id, api_hash)
+def restart():
+   os.system("aa") 
+@client.on(events.NewMessage(chats=(input('название группы :'))))
+async def normal_handler(event):
+    sender = await event.get_sender()
+#    print(event.message)
+    message = event.message.to_dict()['message']
+    if message == a:
+       await event.reply(aa)
+client.start()
+client.run_until_disconnected()
